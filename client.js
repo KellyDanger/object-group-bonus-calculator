@@ -39,5 +39,14 @@ const employees = [
 
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
+function arrayLoop(array){
+  for(let i = 0; i < array.length; i++ ){
+    console.log(array[i]);
+  }//end for loop
+}//end arrayLoop function
+arrayLoop(employees);
+
+
+
 
 console.log( employees );
