@@ -46,7 +46,17 @@ function arrayLoop(array){
 }//end arrayLoop function
 arrayLoop(employees);
 
+function filter(employeeObject){
+  //take employee object as argument
+  //return new object with new key/value pairs
+  let newEmployeeObject = {
+    name: employeeObject.name,
+    bonusPercentage: "", //SEECALCULATIONS,
+    totalCompensation: employeeObject.annualSalary, //+ //SEECALCULATIONS,
+    totalBonus: "",//SEECALCULATIONS(rounded up to the nearest dollar)
+  };
 
+}//end filter function
 
 
 console.log( employees );
