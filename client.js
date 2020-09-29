@@ -58,5 +58,34 @@ function filter(employeeObject){
 
 }//end filter function
 
+function bonusCalc(employeeObject){
+  let bonus = 0;
+  let bonusPercentage = 0;
+  if(employeeObject.reviewRating <= 2){
+    bonus = 0;
+    bonusPercentage = 0;
+  }
+  else if(employeeObject.reviewRating === 3){
+    bonus = employeeObject.annualSalary * .04;
+    bonusPercentage = 0;
+  }
+  else if(employeeObject.reviewRating === 4){
+    bonus = employeeObject.annualSalary * .06;
+    bonusPercentage = 0;
+  }
+  else if(employeeObject.reviewRating === 5){
+    bonus = employeeObject.annualSalary * .10;
+    bonusPercentage = 0;
+  }//end else if chain
+  if(employeeObject.employeeNumber.length === 4){
+    bonus += employeeObject.annualSalary * .05;
+    bonusPercentage = 0;
+  }//end if
+  if(employeeObject.annualSalary > 65000){
+    bonus -= employeeObject.annualSalary * .01;
+    bonusPercentage = 0;
+  }//end if
+  return bonus;
+}//end bonusCalc
 
 console.log( employees );
