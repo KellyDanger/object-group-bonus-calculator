@@ -1,3 +1,10 @@
+$(document).ready(readyNow)
+function readyNow(){
+  console.log('jq');
+  
+
+
+
 const employees = [
   {
     name: 'Atticus',
@@ -41,7 +48,7 @@ const employees = [
 // Ask questions when you don't.
 let bonusPercentage = 0;
 let bonus = 0;
-
+let newEmployeeObject = {}
 
 function arrayLoop(array){
   for(let i = 0; i < array.length; i++ ){
@@ -54,13 +61,14 @@ function filter(employeeObject){
   //take employee object as argument
   //return new object with new key/value pairs
   bonusCalc(employeeObject);
-  let newEmployeeObject = {
+  newEmployeeObject = {
     name: employeeObject.name,
     bonusPercentage: bonusPercentage,
     totalCompensation: +employeeObject.annualSalary + Number(bonus),
     totalBonus: Math.round(Number(bonus))
   };
-return newEmployeeObject
+displayEmployees();
+return newEmployeeObject;
 }//end filter function
 
 function bonusCalc(employeeObject){
@@ -90,5 +98,13 @@ function bonusCalc(employeeObject){
   }//end if
 }//end bonusCalc
 
+function displayEmployees(){
+  let el = $('#employeeInfo');
+  el.empty();
+  el.append(`Name: ${newEmployeeObject.name} <br> Bonus Percentage: ${newEmployeeObject.bonusPercentage}% <br> Total Compensation: $${newEmployeeObject.totalCompensation} <br> Total Bonus: $${newEmployeeObject.totalBonus}`);
+}
+displayEmployees()
 console.log( employees );
-filter(employees[0])
+console.log( filter (employees[0]))
+//${newEmployeeObject}
+}
