@@ -40,6 +40,7 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 let bonusPercentage = 0;
+let bonus = 0;
 
 
 function arrayLoop(array){
@@ -52,17 +53,17 @@ arrayLoop(employees);
 function filter(employeeObject){
   //take employee object as argument
   //return new object with new key/value pairs
+  bonusCalc(employeeObject);
   let newEmployeeObject = {
     name: employeeObject.name,
     bonusPercentage: bonusPercentage,
-    totalCompensation: employeeObject.annualSalary, //+ //SEECALCULATIONS,
-    totalBonus: "",//SEECALCULATIONS(rounded up to the nearest dollar)
+    totalCompensation: +employeeObject.annualSalary + Number(bonus),
+    totalBonus: Math.round(Number(bonus))
   };
-
+return newEmployeeObject
 }//end filter function
 
 function bonusCalc(employeeObject){
-  let bonus = 0;
   if(employeeObject.reviewRating <= 2){
     bonus = 0;
     bonusPercentage = 0;
@@ -83,12 +84,11 @@ function bonusCalc(employeeObject){
     bonus += employeeObject.annualSalary * .05;
     bonusPercentage += 5;
   }//end if
-  if(employeeObject.annualSalary > 65000){
+  if(bonus > 0 && employeeObject.annualSalary > 65000){
     bonus -= employeeObject.annualSalary * .01;
     
   }//end if
-  return bonus; 
 }//end bonusCalc
 
 console.log( employees );
-// test
+filter(employees[0])
